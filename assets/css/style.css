@@ -16,7 +16,6 @@ body{
 
 .contentCol{
     background:#ddd;
-    min-height:500px;
     opacity:.9;
 }
 
@@ -29,6 +28,36 @@ body{
     width:100%;
     padding:10px 0px;
 }
+
+
+
+.answerBox{
+    background:#333;
+}
+
+
+
+.answerBox h3{
+    color:#fff;
+    padding-left:10px;
+}
+
+.contentWrapper{
+    padding:20px;
+}
+
+#activeQuestion{
+    background:#333;
+    height:100px;
+}
+
+
+.answerBox{
+    padding:10px;
+    margin: 10px 0px;
+}
+
+
 
 
 
