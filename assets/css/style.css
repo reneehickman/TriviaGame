@@ -17,6 +17,7 @@ body{
 .contentCol{
     background:#ddd;
     opacity:.9;
+    margin:0px auto;
 }
 
 #header{
@@ -32,7 +33,7 @@ body{
 
 
 .answerBox{
-    background:#333;
+    /* background:#333; */
 }
 
 
@@ -47,14 +48,18 @@ body{
 }
 
 #activeQuestion{
-    background:#333;
-    height:100px;
+    /* background:#333; */
+    /* height:100px; */
 }
 
 
 .answerBox{
-    padding:10px;
+    padding:0px;
     margin: 10px 0px;
+}
+
+.answer{
+    text-align:left;
 }
 
 
