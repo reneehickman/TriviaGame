@@ -12,39 +12,44 @@
 
 <body>
     <div class="container-fluid contentWrap pl-0 pr-0">
-        <div class="container-fluid" id="header">
             <header class="container-fluid">
                 <img src="assets/images/head1.png" id="headerImg">
             </header>
-        </div>
-        <div class="container gameContent">
+        
+        <div class="container gameContainer">
             <!--Holds all game content--->
             <div class="row">
                 <div class="col-lg-8 col-md-10 col-sm-9 contentCol">
 
-                    <div class="container contentWrapper">
 
+                        <div class="start" id="startPage">
+                                <h2>Test your knowledge on Astrology</h2>
+                                <p>You will have 20 seconds to answer each question. Good luck!</p>
+                                <!-- <img src="" alt="" class="img-fluid"> -->
+                                <div class="btn btn-primary" id="startButton">Start
+                                </div>
+                            </div>
+
+                    
+                    <div class="game" id="gameContent">      
                     <div class="row">
                         <div class="col-sm-12">
-                            <p id="activeQuestion">
-
+                            <h4>Time Remaining: <span id="timeRemaining"></span></h4>
+                            <p id="currentQuestion"></p>
+                            <p id="activeQuestion" class="question">
                             </p>
                         </div>
-                    </div>
-                    <!--end of question row-->
-
-
+                    </div><!--end of question row-->
+                    
                     <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="answerBox">
-                                            <button type="button" class="btn btn-secondary btn-lg btn-block answer">A. </button>
-                                            <!-- <h3>A.</h3><span id="answerA"></span> -->
+                                            <button type="button" class="btn btn-secondary btn-lg btn-block answer">A. <span id="answerA"></span></button>
                                       </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="answerBox">
-                                            <button type="button" class="btn btn-secondary btn-lg btn-block answer">B. </button>
-                                            <!-- <h3>B.</h3><span id="answerB"></span> -->
+                                            <button type="button" class="btn btn-secondary btn-lg btn-block answer">B. <span id="answerB"></span></button>
                                       </div>
                             </div>
                           </div>
@@ -52,24 +57,44 @@
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="answerBox">
-                                                <button type="button" class="btn btn-secondary btn-lg btn-block answer">C. </button>
-                                                <!-- <h3>C.</h3><span id="answerC"></span> -->
+                                                <button type="button" class="btn btn-secondary btn-lg btn-block answer">C. <span id="answerC"></span></button>
                                           </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                   <div class="answerBox">
-                                        <button type="button" class="btn btn-secondary btn-lg btn-block answer">D. </button>
-                                        <!-- <h3>D.</h3><span id="answerD"></span> -->
+                                        <button type="button" class="btn btn-secondary btn-lg btn-block answer">D. <span id="answerD"></span></button>
                                   </div>
                                 </div>
                               </div>
+                </div><!--end of gameContent div container-->
+
+                <div class="answerPage" id="answerPage">
+                    <div id="message">
+                    </div>
+                    <div id="answerImg">
+                    </div>
                 </div>
 
-            </div> <!--end of content container-->
+
+                <!--holds result values and is shown at the end of the game-->
+                <div class="results" id="resultsPage">
+                    <h2>Here are your results:</h2>
+                    <!-- <div id="answerImg">
+                    </div> -->
+                    <p>Correct Answers: <span id="correctAnswers"></span></p>
+                    <p>Incorrect Answers: <span id="incorrectAnswers"></span></p>
+                    <p>Unanswered Questions: <span id="unansweredQuestions"></span></p>
+
+                    <div class="btn btn-primary" id="playAgainButton">Play Again
+                        </div>
+                </div><!--end of results div-->
 
 
-            </div>
-        </div>
+            </div> <!--end of gameContainer content col-->
+
+
+            </div><!--end of gameContainer row-->
+        </div><!--end of gameContainer-->
 
         <!-- <div class="container-fluid footer">
             <div class="container foot">
