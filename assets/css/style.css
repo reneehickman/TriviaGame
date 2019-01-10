@@ -106,6 +106,17 @@ header{
 }
 
 
+.buttons{
+    margin:10px;
+    width:46%;
+    display:inline-block;
+}
+
+
+.question h2{
+    font-size:1.7em;
+    font-weight:bold;
+}
 
 
 
@@ -118,6 +129,10 @@ header{
         width:100%;
     }
 
+    .buttons{
+        width:100%;
+    }
+
 
 }
 
@@ -125,6 +140,10 @@ header{
 @media (min-width: 576px) and (max-width: 767.98px) { 
     #headerImg{
         width:75%;
+    }
+
+    .buttons{
+        width:100%;
     }
 }
 

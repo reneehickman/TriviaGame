@@ -1,81 +1,81 @@
 
 
 var triviaQuestions = [{
-        question: "A person with an April 13th birthday would have what sign?",
-        answerChoices: ["Scorpio", "Pisces", "Aries", "Taurus"],
-        correct: 2,
-        message: "placeholder text for now",
-        image: "question1"
-    },
+    question: "A person with an April 13th birthday would have which of the following Sun signs?",
+    answerChoices: ["Scorpio", "Pisces", "Aries", "Taurus"],
+    correct: 2,
+    message: "placeholder text for now",
+    image: "question1"
+},
 
-    {
-        question: "Which of the following keywords would a Gemini most likely use to describe themselves?",
-        answerChoices: ["I feel", "I am", "I desire", "I think"],
-        correct: 3,
-        message: "placeholder text for now",
-        image: "question2"
-    },
-    {
-        question: "Which of the four elements is Capricorn?",
-        answerChoices: ["Air", "Earth", "Water", "Fire"],
-        correct: 1,
-        message: "placeholder text for now",
-        image: "question3"
-    },
-    {
-        question: "Which planet is symbolic of our emotional nature?",
-        answerChoices: ["Sun", "Mars", "Moon", "Mercury"],
-        correct: 2,
-        message: "placeholder text for now",
-        image: "question4"
-    },
-    {
-        question: "The Moon rules which sign of the zodiac?",
-        answerChoices: ["Pisces", "Cancer", "Gemini", "Sagittarius"],
-        correct: 1,
-        message: "placeholder text for now",
-        image: "question5"
-    },
-    {
-        question: "How many houses is the zodiac divided into?",
-        answerChoices: ["12", "6", "10", "4"],
-        correct: 0,
-        message: "placeholder text for now",
-        image: "question6"
-    },
-    {
-        question: "The sign of Libra is ruled by which planet?",
-        answerChoices: ["Mercury", "Pluto", "Venus", "Neptune"],
-        correct: 2,
-        message: "placeholder text for now",
-        image: "question7"
-    },
-    {
-        question: "Which planet controls sex drive and ambition?",
-        answerChoices: ["Mars", "Venus", "Uranus", "Neptune"],
-        correct: 0,
-        message: "placeholder text for now",
-        image: "question8"
-    },
-    {
-        question: "Which keyword best represents the water element?",
-        answerChoices: ["Practical", "Emotional", "Forceful", "Logical"],
-        correct: 1,
-        message: "placeholder text for now",
-        image: "question9"
-    },
-    {
-        question: "What are the 3 fire signs?",
-        answerChoices: ["Aquarius, Aries, and Sagittarius", "Scorpio, Aries, and Leo", "Capricorn, Pisces, and Aries", "Aries, Sagittarius, and Leo"],
-        correct: 3,
-        message: "placeholder text for now",
-        image: "question10"
-    }
+{
+    question: "Which of the following keywords would a Gemini most likely use to describe themselves?",
+    answerChoices: ["I feel", "I am", "I desire", "I think"],
+    correct: 3,
+    message: "placeholder text for now",
+    image: "question2"
+},
+{
+    question: "Which of the four elements is Capricorn?",
+    answerChoices: ["Air", "Earth", "Water", "Fire"],
+    correct: 1,
+    message: "placeholder text for now",
+    image: "question3"
+},
+{
+    question: "Which planet is symbolic of our emotional nature?",
+    answerChoices: ["Sun", "Mars", "Moon", "Mercury"],
+    correct: 2,
+    message: "placeholder text for now",
+    image: "question4"
+},
+{
+    question: "The Moon rules which sign of the zodiac?",
+    answerChoices: ["Pisces", "Cancer", "Gemini", "Sagittarius"],
+    correct: 1,
+    message: "placeholder text for now",
+    image: "question5"
+},
+{
+    question: "How many houses is the zodiac divided into?",
+    answerChoices: ["12", "6", "10", "4"],
+    correct: 0,
+    message: "placeholder text for now",
+    image: "question6"
+},
+{
+    question: "The sign of Libra is ruled by which planet?",
+    answerChoices: ["Mercury", "Pluto", "Venus", "Neptune"],
+    correct: 2,
+    message: "placeholder text for now",
+    image: "question7"
+},
+{
+    question: "Which planet controls sex drive and ambition?",
+    answerChoices: ["Mars", "Venus", "Uranus", "Neptune"],
+    correct: 0,
+    message: "placeholder text for now",
+    image: "question8"
+},
+{
+    question: "Which keyword best represents the water element?",
+    answerChoices: ["Practical", "Emotional", "Forceful", "Logical"],
+    correct: 1,
+    message: "placeholder text for now",
+    image: "question9"
+},
+{
+    question: "What are the 3 fire signs?",
+    answerChoices: ["Aquarius, Aries, and Sagittarius", "Scorpio, Aries, and Leo", "Capricorn, Pisces, and Aries", "Aries, Sagittarius, and Leo"],
+    correct: 3,
+    message: "placeholder text for now",
+    image: "question10"
+}
 ]
 
 
 //Global Variables
-var questionTimer = 1005; // seconds user will have to guess each question
+var questionTimer = 10; // seconds user will have to guess each question
 var answerTimer = 4; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
@@ -89,49 +89,49 @@ var userAnswer;
 
 var gamePlay = {
 
-    startGame: function(){
-    $('#gameContent').show();
-    $('#resultsPage').empty();
-	$('#correctAnswers').empty();
-	$('#incorrectAnswers').empty();
-    $('#unansweredQuestions').empty();
-    $('#startPage').hide();
-    $('#resultsPage').hide();
-	currentQuestion = 0;
-	correctAnswers = 0;
-	incorrectAnswers = 0;
-    unansweredQuestions = 0;
-    gamePlay.startTime();
-	triviaContent.newQuestion();
-    },
+startGame: function(){
+$('#gameContent').show();
+$('#resultsPage').empty();
+$('#correctAnswers').empty();
+$('#incorrectAnswers').empty();
+$('#unansweredQuestions').empty();
+$('#startPage').hide();
+$('#resultsPage').hide();
+currentQuestion = 0;
+correctAnswers = 0;
+incorrectAnswers = 0;
+unansweredQuestions = 0;
+gamePlay.startTime();
+triviaContent.newQuestion();
+},
 
 
-    startTime: function(){
-        $('#timeRemaining').html(questionTimer);
-        interval = setInterval(gamePlay.countdown, 1000);
-    },
+startTime: function(){
+    $('#timeRemaining').html(questionTimer);
+    interval = setInterval(gamePlay.countdown, 1000);
+},
 
-    //decrease timer and when timer gets to 0, stop time
-    countdown: function () {
-        questionTimer--;
-        $('#timeRemaining').html(questionTimer);
-        if (questionTimer === 0) {
-            gamePlay.stopTime();
-        }
-    },
+//decrease timer and when timer gets to 0, stop time
+countdown: function () {
+    questionTimer--;
+    $('#timeRemaining').html(questionTimer);
+    if (questionTimer === 0) {
+        gamePlay.stopTime();
+    }
+},
 
-    //stop time and show answer page
-    stopTime: function () {
-        clearInterval(interval);
-        $('#gameContent').hide();
-        $('#answerPage').show();
-        triviaContent.checkAnswer();
-    },
+//stop time and show answer page
+stopTime: function () {
+    clearInterval(interval);
+    $('#gameContent').hide();
+    $('#answerPage').show();
+    triviaContent.checkAnswer();
+},
 
 
-    // showResultsPage: function () {
-    //     $('#gameContent').hide();   
-    // },
+// showResultsPage: function () {
+//     $('#gameContent').hide();   
+// },
 
 
 
@@ -140,69 +140,69 @@ var gamePlay = {
 
 
 var triviaContent = {
-    //sets up new questions & answerList
-    newQuestion: function(){
-        $('#currentQuestion').html('Question #'+(currentQuestion+1)+' of '+triviaQuestions.length);
-        $('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
+//sets up new questions & answerList
+newQuestion: function(){
+    $('#currentQuestion').html('Question #'+(currentQuestion+1)+' of '+triviaQuestions.length);
+    $('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
 
-            for (var i = 0; i < 4; i++){
-                // for(var j = 0; j < triviaQuestions.length; j++){
-            var buttons = $('<button>');
-            buttons.text(triviaQuestions[currentQuestion].answerChoices[i]);
-            buttons.attr({'data-index': i});
-            buttons.addClass('btn btn-secondary btn-lg btn-block col-lg-6 col-md-6 col-sm-12 buttons ');
-            $('.answerBox').append(buttons);
-                // }
+        for (var i = 0; i < 4; i++){
+            // for(var j = 0; j < triviaQuestions.length; j++){
+        var buttons = $('<button>');
+        buttons.text(triviaQuestions[currentQuestion].answerChoices[i]);
+        buttons.attr({'data-index': i});
+        buttons.addClass('btn btn-secondary btn-lg btn-block buttons ');
+        $('.answerBox').append(buttons);
+            // }
+    }
+
+
+    // var answerA = triviaQuestions[currentQuestion].answerChoices[0];
+    // var answerB = triviaQuestions[currentQuestion].answerChoices[1];
+    // var answerC = triviaQuestions[currentQuestion].answerChoices[2];
+    // var answerD = triviaQuestions[currentQuestion].answerChoices[3];
+
+    // $('#answerA').append(answerA);
+    // $('#answerB').append(answerB);
+    // $('#answerC').append(answerC);
+    // $('#answerD').append(answerD);
+
+
+
+},
+
+
+
+checkAnswer: function(){
+
+    var correctAnswer;
+
+    for (var i = 0; i < triviaQuestions.length; i++) {
+
+        var correct = triviaQuestions[currentQuestion].correct;
+        correctAnswer = triviaQuestions[currentQuestion].answerChoices[correct];
+        userAnswer = $(answerButton).text();
+
+        if (userAnswer === correctAnswer) {
+            correctAnswers++;
+            console.log(correctAnswers);
+        } else if (userAnswer === "") {
+            unansweredQuestions++;
+        } else {
+            incorrectAnswers++;
         }
-    
-
-        // var answerA = triviaQuestions[currentQuestion].answerChoices[0];
-        // var answerB = triviaQuestions[currentQuestion].answerChoices[1];
-        // var answerC = triviaQuestions[currentQuestion].answerChoices[2];
-        // var answerD = triviaQuestions[currentQuestion].answerChoices[3];
-
-        // $('#answerA').append(answerA);
-        // $('#answerB').append(answerB);
-        // $('#answerC').append(answerC);
-        // $('#answerD').append(answerD);
-
-
-
-    },
-
-
-
-    checkAnswer: function(){
-
-        var correctAnswer;
-
-        for (var i = 0; i < triviaQuestions.length; i++) {
-
-            var correct = triviaQuestions[currentQuestion].correct;
-            correctAnswer = triviaQuestions[currentQuestion].answerChoices[correct];
-            userAnswer = $(answerButton).text();
-
-            if (userAnswer === correctAnswer) {
-                correctAnswers++;
-                console.log(correctAnswers);
-            } else if (userAnswer === "") {
-                unansweredQuestions++;
-            } else {
-                incorrectAnswers++;
-            }
-            
-        }
-    },
+        
+    }
+},
 
 }
 
 
 
 window.onload = function () {
-    var startButton = $('#startButton');
-    startButton.on("click", gamePlay.startGame);
-    var playAgainButton = $('#playAgainButton');
-    playAgainButton.on('click', gamePlay.startGame);
+var startButton = $('#startButton');
+startButton.on("click", gamePlay.startGame);
+var playAgainButton = $('#playAgainButton');
+playAgainButton.on('click', gamePlay.startGame);
 
 };
 
@@ -211,3 +211,4 @@ window.onload = function () {
 
 
 // $(document).ready(gamePlay);
+
