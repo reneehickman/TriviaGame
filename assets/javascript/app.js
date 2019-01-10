@@ -146,20 +146,6 @@ var triviaContent = {
         $('#currentQuestion').html('Question #'+(currentQuestion+1)+' of '+triviaQuestions.length);
         $('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
 
-        // for (var i = 0; i < 4; i++){
-        //     var buttons = $('<button>');
-        //     buttons.text(triviaQuestions[currentQuestion].answerChoices[i]);
-        //     buttons.attr({'data-index': i});
-        //     buttons.addClass('thisButton');
-        //     $('.answerBox').append(buttons);
-            // buttons.append('<button>' + triviaQuestions[currentQuestion].answerChoices + '</button');
-            // $('.thisChoice').on('click',function(){
-            //     userSelect = $(this).data('index');
-            //     clearInterval(time);
-            //     answerPage();
-            // });
-
-        // };
             for (var i = 0; i < 4; i++){
                 // for(var j = 0; j < triviaQuestions.length; j++){
             var buttons = $('<button>');
@@ -221,15 +207,7 @@ window.onload = function () {
 
 };
 
-// var answerButton = $('#answers .button');
 
-
-
-        // answerButton.on('click', function(){
-        //     $('#startPage').show();
-        //     // userAnswer = $(this).data('index');
-
-        // });
 
 
 
