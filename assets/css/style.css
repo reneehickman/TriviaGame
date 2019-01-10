@@ -96,6 +96,14 @@ header{
     padding-top:20px;
 }
 
+.buttons{
+    display:inline;
+}
+
+
+.btn{
+    vertical-align:inherit;
+}
 
 
 
