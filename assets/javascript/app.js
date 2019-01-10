@@ -130,7 +130,6 @@ var gamePlay = {
 
 
     // showResultsPage: function () {
-    //     $('#startPage').show();
     //     $('#gameContent').hide();   
     // },
 
