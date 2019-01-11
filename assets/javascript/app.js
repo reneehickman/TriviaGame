@@ -9,14 +9,14 @@ var triviaQuestions = [{
 },
 
 {
-    question: "Which of the following keywords would a Gemini most likely use to describe themselves?",
-    answerChoices: ["I feel", "I am", "I desire", "I think"],
+    question: "The sign of Leo is represented by which of the following zodiac symbols?",
+    answerChoices: ["The Ram", "The Crab", "The Bull", "The Lion"],
     correct: 3,
     message: "placeholder text for now",
     image: "question2"
 },
 {
-    question: "Which of the four elements is Capricorn?",
+    question: "Capricorn is represented by which of the four elements?",
     answerChoices: ["Air", "Earth", "Water", "Fire"],
     correct: 1,
     message: "placeholder text for now",
@@ -111,7 +111,7 @@ triviaContent.newQuestion();
 
 startTime: function(){
     clearInterval(interval);
-    questionTimer = 10;
+    questionTimer = 1000;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
