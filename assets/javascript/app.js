@@ -78,7 +78,7 @@ var triviaQuestions = [{
 
 
 //Global Variables
-var questionTimer = 1000; // seconds user will have to guess each question
+var questionTimer = 10; // seconds user will have to guess each question
 var answerTimer = 4; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
@@ -110,6 +110,8 @@ triviaContent.newQuestion();
 
 
 startTime: function(){
+    clearInterval(interval);
+    questionTimer = 10;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
