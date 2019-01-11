@@ -73,9 +73,12 @@ var triviaQuestions = [{
 }
 ]
 
+// $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.png" width = "400px">');
+// triviaQuestions[currentQuestion].image
+
 
 //Global Variables
-var questionTimer = 10; // seconds user will have to guess each question
+var questionTimer = 1000; // seconds user will have to guess each question
 var answerTimer = 4; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
@@ -86,6 +89,7 @@ var correctAnswers;
 var incorrectAnswers;
 var unansweredQuestions;
 var userAnswer;
+var answer;
 
 var gamePlay = {
 
@@ -96,7 +100,6 @@ $('#correctAnswers').empty();
 $('#incorrectAnswers').empty();
 $('#unansweredQuestions').empty();
 $('#startPage').hide();
-$('#resultsPage').hide();
 currentQuestion = 0;
 correctAnswers = 0;
 incorrectAnswers = 0;
@@ -117,6 +120,7 @@ countdown: function () {
     $('#timeRemaining').html(questionTimer);
     if (questionTimer === 0) {
         gamePlay.stopTime();
+        answer = false;
     }
 },
 
@@ -125,18 +129,43 @@ stopTime: function () {
     clearInterval(interval);
     $('#gameContent').hide();
     $('#answerPage').show();
+    $('.btn, .btn-secondary, .btn-lg, .btn-block, .buttons').hide();
+    $('#answerBox').empty();
     triviaContent.checkAnswer();
 },
 
+answerTime: function(){
+    answerTimer = 4;
+    interval = setInterval(gamePlay.answerCountdown, 1000);
 
-// showResultsPage: function () {
-//     $('#gameContent').hide();   
-// },
+},
+
+answerCountdown: function(){
+    answerTimer--;
+    console.log(answerTimer);
+    if (answerTimer === 0) {
+        currentQuestion++;
+        gamePlay.stopAnswerCountdown();
+        
+        
+
+    }
+},
 
 
+stopAnswerCountdown: function(){
+    clearInterval(interval);
+    $('#gameContent').show();
+    $('#answerPage').hide();
 
-
+    gamePlay.startTime();
+    triviaContent.newQuestion();
+    
 }
+
+
+
+}//end of gamePlay object
 
 
 var triviaContent = {
@@ -144,54 +173,48 @@ var triviaContent = {
 newQuestion: function(){
     $('#currentQuestion').html('Question #'+(currentQuestion+1)+' of '+triviaQuestions.length);
     $('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
-
+    answer = true;
         for (var i = 0; i < 4; i++){
-            // for(var j = 0; j < triviaQuestions.length; j++){
         var buttons = $('<button>');
         buttons.text(triviaQuestions[currentQuestion].answerChoices[i]);
         buttons.attr({'data-index': i});
-        buttons.addClass('btn btn-secondary btn-lg btn-block buttons ');
+        buttons.addClass('btn btn-secondary btn-lg btn-block buttons');
         $('.answerBox').append(buttons);
-            // }
     }
 
 
-    // var answerA = triviaQuestions[currentQuestion].answerChoices[0];
-    // var answerB = triviaQuestions[currentQuestion].answerChoices[1];
-    // var answerC = triviaQuestions[currentQuestion].answerChoices[2];
-    // var answerD = triviaQuestions[currentQuestion].answerChoices[3];
-
-    // $('#answerA').append(answerA);
-    // $('#answerB').append(answerB);
-    // $('#answerC').append(answerC);
-    // $('#answerD').append(answerD);
-
-
-
+    $('.btn, .btn-secondary, .btn-lg, .btn-block, .buttons').on('click',function(){
+        userAnswer = $(this).data('index');
+        gamePlay.stopTime();
+	});
 },
-
 
 
 checkAnswer: function(){
 
     var correctAnswer;
+    var correct;
 
-    for (var i = 0; i < triviaQuestions.length; i++) {
-
-        var correct = triviaQuestions[currentQuestion].correct;
+    //correctAnswer = triviaQuestions[currentQuestion].answerChoices[triviaQuestions[currentQuestion].correct];
+        correct = triviaQuestions[currentQuestion].correct;
         correctAnswer = triviaQuestions[currentQuestion].answerChoices[correct];
-        userAnswer = $(answerButton).text();
+        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.png" width = "400px">');
 
-        if (userAnswer === correctAnswer) {
+        console.log(correctAnswer);
+        // userAnswer = $(answerButton).text();
+
+        if (userAnswer == correctAnswer && answer == true) {
             correctAnswers++;
+
             console.log(correctAnswers);
-        } else if (userAnswer === "") {
+        } else if (userAnswer == false) {
             unansweredQuestions++;
         } else {
             incorrectAnswers++;
         }
+        gamePlay.answerTime();
+
         
-    }
 },
 
 }

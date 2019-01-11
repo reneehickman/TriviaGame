@@ -35,9 +35,9 @@ header{
 
 
 
-.answerBox{
+/* .answerBox{ */
     /* background:#333; */
-}
+/* } */
 
 
 
@@ -50,10 +50,10 @@ header{
     padding:20px;
 }
 
-#activeQuestion{
+/*#activeQuestion{*/
     /* background:#333; */
     /* height:100px; */
-}
+/*}*/
 
 
 .answerBox{
@@ -79,6 +79,9 @@ header{
     text-align:center;
 }
 
+#answerPage{
+    display:none;
+}
 
 #resultsPage{
     display:none;
