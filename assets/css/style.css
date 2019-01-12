@@ -61,7 +61,7 @@ header{
 
 .answerBox{
     padding:0px;
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
 }
 
 #answerImg{
@@ -248,6 +248,11 @@ header{
 #resultsPage{
     padding:15px 15px 25px 15px;
 }    
+
+.buttons{
+    margin-bottom:5px;
+}
+
 
 }
 
