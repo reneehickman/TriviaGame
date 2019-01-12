@@ -85,6 +85,18 @@ header{
 
 #answerPage{
     display:none;
+    margin:0px auto;
+    text-align:center;
+    color:#fff;
+    margin-bottom:20px;
+}
+
+.space{
+    margin-top:-20px;
+}
+
+#answerText{
+    margin-top:20px;
 }
 
 #resultsPage{

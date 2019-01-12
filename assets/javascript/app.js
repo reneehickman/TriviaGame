@@ -78,8 +78,8 @@ var triviaQuestions = [{
 
 
 //Global Variables
-var questionTimer = 5; // seconds user will have to guess each question
-var answerTimer = 2; // seconds user is shown the correct answer before next question
+var questionTimer = 2; // seconds user will have to guess each question
+var answerTimer = 1; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
 var timeRemainingToGuess;
@@ -111,7 +111,7 @@ triviaContent.newQuestion();
 
 startTime: function(){
     clearInterval(interval);
-    questionTimer = 5;
+    questionTimer = 2;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
@@ -138,7 +138,7 @@ stopTime: function () {
 },
 
 answerTime: function(){
-    answerTimer = 2;
+    answerTimer = 1;
     interval = setInterval(gamePlay.answerCountdown, 1000);
 
 },
@@ -182,6 +182,7 @@ stopAnswerCountdown: function(){
        $('#answerPage').hide();
     $('#resultsPage').show();
     $('#gameContent').hide(); 
+    $('#playAgainButton').show();
     $('#answerImg').empty();  
     $('#currentQuestion').empty();
     $('#correctAnswers').append(correctAnswers);
@@ -189,17 +190,18 @@ stopAnswerCountdown: function(){
         $('#unansweredQuestions').append(unansweredQuestions);
 },
 
-// restartGame: function () {
-//     timer = 120;
-//     $('#timeRemaining').html(timer);
-//     $("#questionsList").empty();
-//     gamePlay.startTime();
-//     showResultsPage.empty();
+
+
+
+restartGame: function () {
+    $('#answerPage').hide();
+    currentQuestion = 0;
+    gamePlay.startGame();
 
 
 
 
-// }
+}
 
 
 
@@ -218,7 +220,7 @@ newQuestion: function(){
         buttons.text(triviaQuestions[currentQuestion].answerChoices[i]);
         buttons.attr({'data-index': i});
         buttons.addClass('btn btn-primary btn-lg btn-block buttons');
-        $('.answerBox').append(buttons);
+        $('.answerBox').append(buttons); 
     }
 
 
@@ -231,26 +233,29 @@ newQuestion: function(){
 
 checkAnswer: function(){
 
-    var correctAnswer;
-    var correct;
+    var correctAnswerText;
+    var correctIndex;
 
     //correctAnswer = triviaQuestions[currentQuestion].answerChoices[triviaQuestions[currentQuestion].correct];
-        
-        correctAnswerText = triviaQuestions[currentQuestion].answerChoices[correct];
+    correctIndex = triviaQuestions[currentQuestion].correct;
+    // correctAnswer = triviaQuestions[currentQuestion].answerChoices[correctIndex];
+        correctAnswerText = triviaQuestions[currentQuestion].answerChoices[correctIndex];
         console.log(correctAnswerText);
-        correctIndex = triviaQuestions[currentQuestion].correct;
         $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
 
-        console.log(correctAnswer);
+        // console.log(correctAnswer);
 
         if (userAnswer == correctIndex && answer == true) {
             correctAnswers++;
+            $('#answerText').html("<h4>That's Correct!</h4> " + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message);
 
             console.log(correctAnswers);
         } else if (answer == false) {
             unansweredQuestions++;
+            $('#answerText').html("<h4>Time is up!</h4>" + 'The correct answer is ' + correctAnswerText + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message);
         } else {
             incorrectAnswers++;
+            $('#answerText').html("<h4>That's incorrect!</h4>" + 'The correct answer is ' + correctAnswerText + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message);
         }
         
 
@@ -266,7 +271,7 @@ window.onload = function () {
 var startButton = $('#startButton');
 startButton.on("click", gamePlay.startGame);
 var playAgainButton = $('#playAgainButton');
-playAgainButton.on('click', gamePlay.startGame);
+playAgainButton.on('click', gamePlay.restartGame);
 
 };
 
