@@ -97,6 +97,8 @@ var gamePlay = {
 
 startGame: function(){
 currentQuestion = 0;
+$('.buttons').empty();
+$('.answerBox').empty();
 $('#gameContent').show();
 $('#answerPage').hide();
 $('#resultsPage').hide();
@@ -135,8 +137,9 @@ stopTime: function () {
     $('#gameContent').hide();
     $('#answerPage').show();
     $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
-    $('.btn, .btn-primary, .btn-lg, .btn-block, .buttons').hide();
-    $('#answerBox').empty();
+    $('.buttons').hide();
+    $('.buttons').empty();
+    $('.answerBox').empty();
     triviaContent.checkAnswer();
 },
 
@@ -176,8 +179,8 @@ stopAnswerCountdown: function(){
 
    //show results page
    showResultsPage: function () {
-    $('.question').empty();
-    $('.buttons').empty();
+    $('.question').hide();
+    $('.buttons').hide();
     $('#answerPage').hide();
     $('#resultsPage').show();
     $('#gameContent').hide(); 

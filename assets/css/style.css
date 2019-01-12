@@ -79,9 +79,10 @@ header{
 
 .start{
     text-align:center;
-    padding:100px 0px;
+    padding:100px 20px;
     color:#fff;
 }
+
 
 .results{
     text-align:center;
@@ -92,22 +93,22 @@ header{
     margin:0px auto;
     text-align:center;
     color:#fff;
-    margin-bottom:20px;
-    padding:20px;
+    padding:30px;
+    /* margin-bottom:20px; */
+    /* margin-bottom:25px; */
 }
 
-.space{
+/* .space{
     margin-top:-20px;
-}
+} */
 
 #answerText{
-    margin:20px 10px;
+    margin-bottom:20px;
 }
 
 #resultsPage{
     display:none;
-    padding-top:20px;
-    padding-bottom:20px;
+    padding:30px;
     color:#fff;
 }    
 
@@ -117,7 +118,7 @@ header{
 
 #gameContent{
     display:none;
-    padding:20px;
+    padding:30px;
 }
 
 #directionsText{
