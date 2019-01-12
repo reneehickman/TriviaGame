@@ -93,6 +93,7 @@ header{
     text-align:center;
     color:#fff;
     margin-bottom:20px;
+    padding:20px;
 }
 
 .space{
@@ -100,7 +101,7 @@ header{
 }
 
 #answerText{
-    margin-top:20px;
+    margin:20px 10px;
 }
 
 #resultsPage{

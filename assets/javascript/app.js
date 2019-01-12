@@ -80,8 +80,8 @@ var triviaQuestions = [{
 
 
 //Global Variables
-var questionTimer = 2; // seconds user will have to guess each question
-var answerTimer = 1; // seconds user is shown the correct answer before next question
+var questionTimer = 10; // seconds user will have to guess each question
+var answerTimer = 3; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
 var timeRemainingToGuess;
@@ -96,6 +96,7 @@ var answer;
 var gamePlay = {
 
 startGame: function(){
+currentQuestion = 0;
 $('#gameContent').show();
 $('#answerPage').hide();
 $('#resultsPage').hide();
@@ -103,18 +104,16 @@ $('#correctAnswers').empty();
 $('#incorrectAnswers').empty();
 $('#unansweredQuestions').empty();
 $('#startPage').hide();
-currentQuestion = 0;
 correctAnswers = 0;
 incorrectAnswers = 0;
 unansweredQuestions = 0;
-// gamePlay.startTime();
 triviaContent.newQuestion();
 },
 
 
 startTime: function(){
     clearInterval(interval);
-    questionTimer = 2;
+    questionTimer = 10;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
@@ -135,13 +134,14 @@ stopTime: function () {
     clearInterval(interval);
     $('#gameContent').hide();
     $('#answerPage').show();
+    $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
     $('.btn, .btn-primary, .btn-lg, .btn-block, .buttons').hide();
     $('#answerBox').empty();
     triviaContent.checkAnswer();
 },
 
 answerTime: function(){
-    answerTimer = 1;
+    answerTimer = 3;
     interval = setInterval(gamePlay.answerCountdown, 1000);
 
 },
@@ -187,7 +187,7 @@ stopAnswerCountdown: function(){
     $('#correctAnswers').html(correctAnswers);
     $('#incorrectAnswers').html(incorrectAnswers);
     $('#unansweredQuestions').html(unansweredQuestions);
-    currentQuestion = 0;
+    // currentQuestion = 0;
     // clearInterval(interval);
 
     var playAgainButton = $('#playAgainButton');
@@ -242,7 +242,7 @@ checkAnswer: function(){
         correctIndex = triviaQuestions[currentQuestion].correct;
         correctAnswerText = triviaQuestions[currentQuestion].answerChoices[correctIndex];
 
-        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
+        // $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
         console.log("d",correctAnswerText);
         console.log("e",userAnswer);
 
