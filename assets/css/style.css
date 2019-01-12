@@ -27,7 +27,7 @@ body{
     /* background:rgba(38, 52, 126, .5); */
     border-radius:10px; 
     margin:0px auto;
-    padding-bottom:10px;
+    /* padding-bottom:10px; */
     /* margin-bottom:40px; */
 }
 
@@ -44,6 +44,7 @@ header{
 
 
 #startPage h5{
+    padding-top:10px;
     padding-bottom:10px;
 }
 
@@ -79,7 +80,7 @@ header{
 
 .start{
     text-align:center;
-    padding:100px 20px;
+    padding:100px 30px;
     color:#fff;
 }
 
@@ -196,7 +197,9 @@ header{
     color:#fff;
 }
 
-
+#imageAnswer{
+    width:250px;
+}
 
 
 
@@ -219,6 +222,32 @@ header{
 
 }
 
+#gameContent{
+    padding:15px 15px;
+}
+
+#answerPage{
+    padding:15px;
+    /* margin-bottom:20px; */
+    /* margin-bottom:25px; */
+}
+
+#imageAnswer{
+    width:100%;
+}
+
+
+#answerText{
+    margin-top:10px;
+}
+
+.answerBox{
+    margin-bottom:0px;
+}
+
+#resultsPage{
+    padding:15px;
+}    
 
 }
 

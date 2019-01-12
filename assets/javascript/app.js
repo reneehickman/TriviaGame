@@ -121,7 +121,7 @@ startTime: function(){
 },
 
 //decrease timer and when timer gets to 0, stop time
-countdown: function () {
+countdown: function () {0
     questionTimer--;
     $('#timeRemaining').html(questionTimer);
     if (questionTimer === 0) {
@@ -136,7 +136,7 @@ stopTime: function () {
     clearInterval(interval);
     $('#gameContent').hide();
     $('#answerPage').show();
-    $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
+    $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px" id="imageAnswer">');
     $('.buttons').hide();
     $('.buttons').empty();
     $('.answerBox').empty();
