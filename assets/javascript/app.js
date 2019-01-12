@@ -111,7 +111,7 @@ triviaContent.newQuestion();
 
 startTime: function(){
     clearInterval(interval);
-    questionTimer = 1000;
+    questionTimer = 10;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
@@ -131,7 +131,7 @@ stopTime: function () {
     clearInterval(interval);
     $('#gameContent').hide();
     $('#answerPage').show();
-    $('.btn, .btn-secondary, .btn-lg, .btn-block, .buttons').hide();
+    $('.btn, .btn-primary, .btn-lg, .btn-block, .buttons').hide();
     $('#answerBox').empty();
     triviaContent.checkAnswer();
 },
@@ -180,12 +180,12 @@ newQuestion: function(){
         var buttons = $('<button>');
         buttons.text(triviaQuestions[currentQuestion].answerChoices[i]);
         buttons.attr({'data-index': i});
-        buttons.addClass('btn btn-secondary btn-lg btn-block buttons');
+        buttons.addClass('btn btn-primary btn-lg btn-block buttons');
         $('.answerBox').append(buttons);
     }
 
 
-    $('.btn, .btn-secondary, .btn-lg, .btn-block, .buttons').on('click',function(){
+    $('.btn, .btn-primary, .btn-lg, .btn-block, .buttons').on('click',function(){
         userAnswer = $(this).data('index');
         gamePlay.stopTime();
 	});

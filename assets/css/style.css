@@ -119,6 +119,12 @@ header{
     border-radius:10px;
 }
 
+#startButton,
+#playAgainButton {
+    width:50%;
+    margin:0px auto;
+}
+
 /* .buttons:link{ */
     /* background:rgba(90, 56, 132, .7); */
     /* background:rgba(92, 36, 147, .7); */
