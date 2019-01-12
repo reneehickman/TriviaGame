@@ -1,5 +1,7 @@
 
 
+
+
 var triviaQuestions = [{
     question: "A person with an April 13th birthday would have which of the following Sun signs?",
     answerChoices: ["Scorpio", "Pisces", "Aries", "Taurus"],
@@ -105,7 +107,7 @@ currentQuestion = 0;
 correctAnswers = 0;
 incorrectAnswers = 0;
 unansweredQuestions = 0;
-gamePlay.startTime();
+// gamePlay.startTime();
 triviaContent.newQuestion();
 },
 
@@ -146,7 +148,7 @@ answerTime: function(){
 
 answerCountdown: function(){
     answerTimer--;
-    console.log(answerTimer);
+    console.log("answertimer:",answerTimer);
     if (answerTimer === 0) {
         currentQuestion++;
         gamePlay.stopAnswerCountdown();
@@ -163,10 +165,10 @@ stopAnswerCountdown: function(){
         
     }
     else{
-    clearInterval(interval);
+    // clearInterval(interval);
     $('#gameContent').show();
         $('#answerPage').hide();
-        gamePlay.startTime();
+        // gamePlay.startTime();
      triviaContent.newQuestion();
     }
     
@@ -174,7 +176,8 @@ stopAnswerCountdown: function(){
 
    //show results page
    showResultsPage: function () {
-    clearInterval(interval);
+    $('.question').empty();
+    $('.buttons').empty();
     $('#answerPage').hide();
     $('#resultsPage').show();
     $('#gameContent').hide(); 
@@ -185,8 +188,11 @@ stopAnswerCountdown: function(){
     $('#incorrectAnswers').html(incorrectAnswers);
     $('#unansweredQuestions').html(unansweredQuestions);
     currentQuestion = 0;
-},
+    // clearInterval(interval);
 
+    var playAgainButton = $('#playAgainButton');
+    playAgainButton.on('click', gamePlay.restartGame);
+},
 
 
 
@@ -195,28 +201,20 @@ restartGame: function () {
         // $('#gameContent').show();
         // $('#answerPage').hide();
         gamePlay.startGame();
-        console.log(correctAnswers, incorrectAnswers, unansweredQuestions);
-        console.log(currentQuestion);
-        console.log(triviaQuestions[currentQuestion].question);
-
-
-
+        console.log("a:",correctAnswers, incorrectAnswers, unansweredQuestions);
+        console.log("b",currentQuestion);
+        console.log("c",triviaQuestions[currentQuestion].question);
 
 }
-
-
-
 
 }//end of gamePlay object
 
 
 var triviaContent = {
-//sets up new questions & answerList
+
+//sets up new questions & answerChoices
 newQuestion: function(){
     $('#currentQuestion').html('Question #'+(currentQuestion+1)+' of '+triviaQuestions.length);
-    if(currentQuestion == -1){
-        gamePlay.startGame();
-    }
     $('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
     answer = true;
         for (var i = 0; i < 4; i++){
@@ -227,8 +225,9 @@ newQuestion: function(){
         $('.answerBox').append(buttons); 
     }
 
+    gamePlay.startTime();
 
-    $('.btn, .btn-primary, .btn-lg, .btn-block, .buttons').on('click',function(){
+    $('.buttons').on('click',function(){
         userAnswer = $(this).data('index');
         gamePlay.stopTime();
 	});
@@ -240,15 +239,12 @@ checkAnswer: function(){
     var correctAnswerText;
     var correctIndex;
 
-    //correctAnswer = triviaQuestions[currentQuestion].answerChoices[triviaQuestions[currentQuestion].correct];
-    correctIndex = triviaQuestions[currentQuestion].correct;
-    // correctAnswer = triviaQuestions[currentQuestion].answerChoices[correctIndex];
+        correctIndex = triviaQuestions[currentQuestion].correct;
         correctAnswerText = triviaQuestions[currentQuestion].answerChoices[correctIndex];
-        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
-        console.log(correctAnswerText);
-        console.log(userAnswer);
 
-        // console.log(correctAnswer);
+        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
+        console.log("d",correctAnswerText);
+        console.log("e",userAnswer);
 
         if (userAnswer == correctIndex && answer == true) {
             correctAnswers++;
@@ -268,8 +264,8 @@ checkAnswer: function(){
         
 
         gamePlay.answerTime();
-        var playAgainButton = $('#playAgainButton');
-        playAgainButton.on('click', gamePlay.restartGame);
+        // var playAgainButton = $('#playAgainButton');
+        // playAgainButton.on('click', gamePlay.restartGame);
 
 }
 
