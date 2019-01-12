@@ -65,7 +65,7 @@ var triviaQuestions = [{
     image: "question-09"
 },
 {
-    question: "The 3 fire signs include Leo, Aries & ______?",
+    question: "The 3 fire signs include Leo, Aries &  ________?",
     answerChoices: ["Taurus", "Scorpio", "Virgo", "Sagittarius"],
     correct: 3,
     message: "placeholder text for now",
@@ -78,8 +78,8 @@ var triviaQuestions = [{
 
 
 //Global Variables
-var questionTimer = 10; // seconds user will have to guess each question
-var answerTimer = 3; // seconds user is shown the correct answer before next question
+var questionTimer = 2; // seconds user will have to guess each question
+var answerTimer = 1; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
 var timeRemainingToGuess;
@@ -95,6 +95,7 @@ var gamePlay = {
 
 startGame: function(){
 $('#gameContent').show();
+$('#answerPage').hide();
 $('#resultsPage').hide();
 $('#correctAnswers').empty();
 $('#incorrectAnswers').empty();
@@ -111,7 +112,7 @@ triviaContent.newQuestion();
 
 startTime: function(){
     clearInterval(interval);
-    questionTimer = 10;
+    questionTimer = 2;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
@@ -138,7 +139,7 @@ stopTime: function () {
 },
 
 answerTime: function(){
-    answerTimer = 3;
+    answerTimer = 1;
     interval = setInterval(gamePlay.answerCountdown, 1000);
 
 },
@@ -149,10 +150,9 @@ answerCountdown: function(){
     if (answerTimer === 0) {
         currentQuestion++;
         gamePlay.stopAnswerCountdown();
-        
-        
-
     }
+
+
 },
 
 
@@ -160,42 +160,44 @@ stopAnswerCountdown: function(){
     if(currentQuestion == (triviaQuestions.length)){
         clearInterval(interval);
         gamePlay.showResultsPage(correctAnswers, incorrectAnswers, unansweredQuestions);
-        // $('#correctAnswers').text(correctAnswers);
-        // $('#incorrectAnswers').text(incorrectAnswers);
-        // $('#unansweredQuestions').text(unansweredQuestions);
         
     }
     else{
     clearInterval(interval);
     $('#gameContent').show();
-    $('#answerPage').hide();
-
-    gamePlay.startTime();
-    triviaContent.newQuestion();
+        $('#answerPage').hide();
+        gamePlay.startTime();
+     triviaContent.newQuestion();
     }
     
 },
 
    //show results page
    showResultsPage: function () {
-       clearInterval(interval);
-       $('#answerPage').hide();
+    clearInterval(interval);
+    $('#answerPage').hide();
     $('#resultsPage').show();
     $('#gameContent').hide(); 
     $('#playAgainButton').show();
     $('#answerImg').empty();  
     $('#currentQuestion').empty();
-    $('#correctAnswers').append(correctAnswers);
-    $('#incorrectAnswers').append(incorrectAnswers);
-    $('#unansweredQuestions').append(unansweredQuestions);
+    $('#correctAnswers').html(correctAnswers);
+    $('#incorrectAnswers').html(incorrectAnswers);
+    $('#unansweredQuestions').html(unansweredQuestions);
+    currentQuestion = 0;
 },
 
 
 
 
 restartGame: function () {
-    $('#answerPage').hide();
-    gamePlay.startGame();
+        clearInterval(interval);
+        // $('#gameContent').show();
+        // $('#answerPage').hide();
+        gamePlay.startGame();
+        console.log(correctAnswers, incorrectAnswers, unansweredQuestions);
+        console.log(currentQuestion);
+        console.log(triviaQuestions[currentQuestion].question);
 
 
 
@@ -212,6 +214,9 @@ var triviaContent = {
 //sets up new questions & answerList
 newQuestion: function(){
     $('#currentQuestion').html('Question #'+(currentQuestion+1)+' of '+triviaQuestions.length);
+    if(currentQuestion == -1){
+        gamePlay.startGame();
+    }
     $('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
     answer = true;
         for (var i = 0; i < 4; i++){
@@ -239,8 +244,9 @@ checkAnswer: function(){
     correctIndex = triviaQuestions[currentQuestion].correct;
     // correctAnswer = triviaQuestions[currentQuestion].answerChoices[correctIndex];
         correctAnswerText = triviaQuestions[currentQuestion].answerChoices[correctIndex];
-        console.log(correctAnswerText);
         $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
+        console.log(correctAnswerText);
+        console.log(userAnswer);
 
         // console.log(correctAnswer);
 
@@ -262,6 +268,9 @@ checkAnswer: function(){
         
 
         gamePlay.answerTime();
+        var playAgainButton = $('#playAgainButton');
+        playAgainButton.on('click', gamePlay.restartGame);
+
 }
 
 
@@ -272,8 +281,6 @@ checkAnswer: function(){
 window.onload = function () {
 var startButton = $('#startButton');
 startButton.on("click", gamePlay.startGame);
-var playAgainButton = $('#playAgainButton');
-playAgainButton.on('click', gamePlay.restartGame);
 
 };
 
