@@ -179,7 +179,6 @@ stopAnswerCountdown: function(){
 
    //show results page
    showResultsPage: function () {
-    $('.question').hide();
     $('.buttons').hide();
     $('#answerPage').hide();
     $('#resultsPage').show();
