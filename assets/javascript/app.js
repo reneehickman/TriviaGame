@@ -65,8 +65,8 @@ var triviaQuestions = [{
     image: "question-09"
 },
 {
-    question: "What are the 3 fire signs?",
-    answerChoices: ["Aquarius, Aries, and Sagittarius", "Scorpio, Aries, and Leo", "Capricorn, Pisces, and Aries", "Aries, Sagittarius, and Leo"],
+    question: "The 3 fire signs include Leo, Aries & ______?",
+    answerChoices: ["Taurus", "Scorpio", "Virgo", "Sagittarius"],
     correct: 3,
     message: "placeholder text for now",
     image: "question-10"
@@ -160,9 +160,9 @@ stopAnswerCountdown: function(){
     if(currentQuestion == (triviaQuestions.length)){
         clearInterval(interval);
         gamePlay.showResultsPage(correctAnswers, incorrectAnswers, unansweredQuestions);
-        $('#correctAnswers').text(correctAnswers);
-        $('#incorrectAnswers').text(incorrectAnswers);
-        $('#unansweredQuestions').text(unansweredQuestions);
+        // $('#correctAnswers').text(correctAnswers);
+        // $('#incorrectAnswers').text(incorrectAnswers);
+        // $('#unansweredQuestions').text(unansweredQuestions);
         
     }
     else{
@@ -186,8 +186,8 @@ stopAnswerCountdown: function(){
     $('#answerImg').empty();  
     $('#currentQuestion').empty();
     $('#correctAnswers').append(correctAnswers);
-        $('#incorrectAnswers').append(incorrectAnswers);
-        $('#unansweredQuestions').append(unansweredQuestions);
+    $('#incorrectAnswers').append(incorrectAnswers);
+    $('#unansweredQuestions').append(unansweredQuestions);
 },
 
 
