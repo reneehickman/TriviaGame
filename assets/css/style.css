@@ -59,6 +59,11 @@ header{
     margin: 10px 0px;
 }
 
+#answerImg{
+    text-align:center;
+    margin:0px auto;
+}
+
 .answer{
     text-align:left;
 }

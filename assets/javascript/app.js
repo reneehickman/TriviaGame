@@ -5,7 +5,7 @@ var triviaQuestions = [{
     answerChoices: ["Scorpio", "Pisces", "Aries", "Taurus"],
     correct: 2,
     message: "placeholder text for now",
-    image: "question1"
+    image: "question-01"
 },
 
 {
@@ -13,63 +13,63 @@ var triviaQuestions = [{
     answerChoices: ["The Ram", "The Crab", "The Bull", "The Lion"],
     correct: 3,
     message: "placeholder text for now",
-    image: "question2"
+    image: "question-02"
 },
 {
     question: "Capricorn is represented by which of the four elements?",
     answerChoices: ["Air", "Earth", "Water", "Fire"],
     correct: 1,
     message: "placeholder text for now",
-    image: "question3"
+    image: "question-03"
 },
 {
     question: "Which planet is symbolic of our emotional nature?",
     answerChoices: ["Sun", "Mars", "Moon", "Mercury"],
     correct: 2,
     message: "placeholder text for now",
-    image: "question4"
+    image: "question-04"
 },
 {
     question: "The Moon rules which sign of the zodiac?",
     answerChoices: ["Pisces", "Cancer", "Gemini", "Sagittarius"],
     correct: 1,
     message: "placeholder text for now",
-    image: "question5"
+    image: "question-05"
 },
 {
     question: "How many houses is the zodiac divided into?",
     answerChoices: ["12", "6", "10", "4"],
     correct: 0,
     message: "placeholder text for now",
-    image: "question6"
+    image: "question-06"
 },
 {
     question: "The sign of Libra is ruled by which planet?",
     answerChoices: ["Mercury", "Pluto", "Venus", "Neptune"],
     correct: 2,
     message: "placeholder text for now",
-    image: "question7"
+    image: "question-07"
 },
 {
     question: "Which planet controls sex drive and ambition?",
     answerChoices: ["Mars", "Venus", "Uranus", "Neptune"],
     correct: 0,
     message: "placeholder text for now",
-    image: "question8"
+    image: "question-08"
 },
 {
     question: "Which keyword best represents the water element?",
     answerChoices: ["Practical", "Emotional", "Forceful", "Logical"],
     correct: 1,
     message: "placeholder text for now",
-    image: "question9"
+    image: "question-09"
 },
 {
     question: "What are the 3 fire signs?",
     answerChoices: ["Aquarius, Aries, and Sagittarius", "Scorpio, Aries, and Leo", "Capricorn, Pisces, and Aries", "Aries, Sagittarius, and Leo"],
     correct: 3,
     message: "placeholder text for now",
-    image: "question10"
+    image: "question-10"
 }
 ]
 
@@ -200,7 +200,7 @@ checkAnswer: function(){
     //correctAnswer = triviaQuestions[currentQuestion].answerChoices[triviaQuestions[currentQuestion].correct];
         correct = triviaQuestions[currentQuestion].correct;
         correctAnswer = triviaQuestions[currentQuestion].answerChoices[correct];
-        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.png" width = "400px">');
+        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "400px">');
 
         console.log(correctAnswer);
         // userAnswer = $(answerButton).text();
