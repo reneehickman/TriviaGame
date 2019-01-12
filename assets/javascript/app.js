@@ -78,8 +78,8 @@ var triviaQuestions = [{
 
 
 //Global Variables
-var questionTimer = 2; // seconds user will have to guess each question
-var answerTimer = 1; // seconds user is shown the correct answer before next question
+var questionTimer = 10; // seconds user will have to guess each question
+var answerTimer = 3; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
 var timeRemainingToGuess;
@@ -111,7 +111,7 @@ triviaContent.newQuestion();
 
 startTime: function(){
     clearInterval(interval);
-    questionTimer = 2;
+    questionTimer = 10;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
@@ -138,7 +138,7 @@ stopTime: function () {
 },
 
 answerTime: function(){
-    answerTimer = 1;
+    answerTimer = 3;
     interval = setInterval(gamePlay.answerCountdown, 1000);
 
 },
@@ -195,7 +195,6 @@ stopAnswerCountdown: function(){
 
 restartGame: function () {
     $('#answerPage').hide();
-    currentQuestion = 0;
     gamePlay.startGame();
 
 
@@ -247,16 +246,19 @@ checkAnswer: function(){
 
         if (userAnswer == correctIndex && answer == true) {
             correctAnswers++;
-            $('#answerText').html("<h4>That's Correct!</h4> " + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message);
+            $('#answerText').html("<h4>That's Correct!</h4> ");
 
             console.log(correctAnswers);
         } else if (answer == false) {
             unansweredQuestions++;
-            $('#answerText').html("<h4>Time is up!</h4>" + 'The correct answer is ' + correctAnswerText + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message);
+            $('#answerText').html("<h4>Time is up!</h4>" + 'The correct answer is ' + correctAnswerText);
         } else {
             incorrectAnswers++;
-            $('#answerText').html("<h4>That's incorrect!</h4>" + 'The correct answer is ' + correctAnswerText + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message);
+            $('#answerText').html("<h4>That's incorrect!</h4>" + 'The correct answer is ' + correctAnswerText);
         }
+
+        // $('#answerText').html("<h4>That's incorrect!</h4>" + 'The correct answer is ' + correctAnswerText + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message);
+        // + '<div class="space">&nbsp;</div>' + triviaQuestions[currentQuestion].message
         
 
         gamePlay.answerTime();
