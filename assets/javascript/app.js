@@ -78,8 +78,8 @@ var triviaQuestions = [{
 
 
 //Global Variables
-var questionTimer = 10; // seconds user will have to guess each question
-var answerTimer = 4; // seconds user is shown the correct answer before next question
+var questionTimer = 5; // seconds user will have to guess each question
+var answerTimer = 2; // seconds user is shown the correct answer before next question
 var numberOfQuestions; // limit the number of questions per game
 var interval;
 var timeRemainingToGuess;
@@ -95,7 +95,7 @@ var gamePlay = {
 
 startGame: function(){
 $('#gameContent').show();
-$('#resultsPage').empty();
+$('#resultsPage').hide();
 $('#correctAnswers').empty();
 $('#incorrectAnswers').empty();
 $('#unansweredQuestions').empty();
@@ -111,7 +111,7 @@ triviaContent.newQuestion();
 
 startTime: function(){
     clearInterval(interval);
-    questionTimer = 10;
+    questionTimer = 5;
     $('#timeRemaining').html(questionTimer);
     interval = setInterval(gamePlay.countdown, 1000);
 },
@@ -121,8 +121,9 @@ countdown: function () {
     questionTimer--;
     $('#timeRemaining').html(questionTimer);
     if (questionTimer === 0) {
-        gamePlay.stopTime();
         answer = false;
+        gamePlay.stopTime();
+        
     }
 },
 
@@ -137,7 +138,7 @@ stopTime: function () {
 },
 
 answerTime: function(){
-    answerTimer = 4;
+    answerTimer = 2;
     interval = setInterval(gamePlay.answerCountdown, 1000);
 
 },
@@ -156,14 +157,50 @@ answerCountdown: function(){
 
 
 stopAnswerCountdown: function(){
+    if(currentQuestion == (triviaQuestions.length)){
+        clearInterval(interval);
+        gamePlay.showResultsPage(correctAnswers, incorrectAnswers, unansweredQuestions);
+        $('#correctAnswers').text(correctAnswers);
+        $('#incorrectAnswers').text(incorrectAnswers);
+        $('#unansweredQuestions').text(unansweredQuestions);
+        
+    }
+    else{
     clearInterval(interval);
     $('#gameContent').show();
     $('#answerPage').hide();
 
     gamePlay.startTime();
     triviaContent.newQuestion();
+    }
     
-}
+},
+
+   //show results page
+   showResultsPage: function () {
+       clearInterval(interval);
+       $('#answerPage').hide();
+    $('#resultsPage').show();
+    $('#gameContent').hide(); 
+    $('#answerImg').empty();  
+    $('#currentQuestion').empty();
+    $('#correctAnswers').append(correctAnswers);
+        $('#incorrectAnswers').append(incorrectAnswers);
+        $('#unansweredQuestions').append(unansweredQuestions);
+},
+
+// restartGame: function () {
+//     timer = 120;
+//     $('#timeRemaining').html(timer);
+//     $("#questionsList").empty();
+//     gamePlay.startTime();
+//     showResultsPage.empty();
+
+
+
+
+// }
+
 
 
 
@@ -198,26 +235,28 @@ checkAnswer: function(){
     var correct;
 
     //correctAnswer = triviaQuestions[currentQuestion].answerChoices[triviaQuestions[currentQuestion].correct];
-        correct = triviaQuestions[currentQuestion].correct;
-        correctAnswer = triviaQuestions[currentQuestion].answerChoices[correct];
-        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "400px">');
+        
+        correctAnswerText = triviaQuestions[currentQuestion].answerChoices[correct];
+        console.log(correctAnswerText);
+        correctIndex = triviaQuestions[currentQuestion].correct;
+        $('#answerImg').html('<img src = "assets/images/'+ triviaQuestions[currentQuestion].image +'.jpg" width = "250px">');
 
         console.log(correctAnswer);
-        // userAnswer = $(answerButton).text();
 
-        if (userAnswer == correctAnswer && answer == true) {
+        if (userAnswer == correctIndex && answer == true) {
             correctAnswers++;
 
             console.log(correctAnswers);
-        } else if (userAnswer == false) {
+        } else if (answer == false) {
             unansweredQuestions++;
         } else {
             incorrectAnswers++;
         }
-        gamePlay.answerTime();
-
         
-},
+
+        gamePlay.answerTime();
+}
+
 
 }
 
